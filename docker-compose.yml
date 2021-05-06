@@ -1,0 +1,41 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    redis:
+      image: redis:alpine
+      container_name: backendacademy2021-redis
+
+    postgres:
+      image: postgres:11.1-alpine
+      container_name: backendacademy2021-postgres
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - POSTGRES_USER=academy
+        - POSTGRES_PASSWORD=academy
+        - POSTGRES_DB=academy
+      ports:
+        - "8769:5432"
+
+    webserver:
+      image: nginx:alpine
+      container_name: backendacademy2021-webserver
+      working_dir: /
+      volumes:
+          - ./academy/:/var/www/academy
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8765:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: backendacademy2021-php-fpm
+      working_dir: /
+      volumes:
+        - ./academy/:/var/www/academy
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
