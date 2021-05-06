@@ -33,9 +33,12 @@ Actual steps:
 5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal and we will run most of the stuff here.
 6. There is a pre-configured Symfony project here in `academy` directory which Docker maps to `/var/www/academy` in our containers. Therefore, run `cd /var/www/academy` to position in the mapped directory.
 7. Run `bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
-8. Open `http://localhost:8765/` in your browser. You should see the default Symfony page.
+8. Open `http://localhost:8765/` in your browser. You should see the default Symfony page. You can also try out `http://127.0.0.1:8765/test/test` json route.
 
 ## Extras (mostly optional)
 1. Switch your PHP version to 7.4 in PHPStorm so you get correct syntax highlighting
 2. In the main directory of this repo, there is a SofaStyle.xml file which is a PHPStorm style config my preferred PHP code style. Import it in the editor if you want to use it.
-3. 
+3. PHPStorm has many nice plugins created by the community. In my opionion they can be divided in 3 groups by installation recommendation:
+    1. Why is that not included out of the box: ".env files support", "Symfony Support" and "PHP Annotations".
+    2. Recommended: "PHP Toolbox", "String manipulation", "PHP Advanced AutoComplete"
+    3. Extremely powerful and useful but might be annoying without microconfiguration: "PHP Inspections", both EA Extended and EA Ultimate versions
