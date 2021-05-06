@@ -35,4 +35,7 @@ Actual steps:
 7. Run `bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
 8. Open `http://localhost:8765/` in your browser. You should see the default Symfony page.
 
-## Lessons 
+## Extras (mostly optional)
+1. Switch your PHP version to 7.4 in PHPStorm so you get correct syntax highlighting
+2. In the main directory of this repo, there is a SofaStyle.xml file which is a PHPStorm style config my preferred PHP code style. Import it in the editor if you want to use it.
+3. 
