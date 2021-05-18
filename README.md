@@ -32,8 +32,9 @@ Actual steps:
 4. If you ran Docker in the foreground, open new terminal and position in the same directory. Otherwise, use the current instance.
 5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal and we will run most of the stuff here.
 6. There is a pre-configured Symfony project here in `academy` directory which Docker maps to `/var/www/academy` in our containers. Therefore, run `cd /var/www/academy` to position in the mapped directory.
-7. Run `bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
-8. Open `http://localhost:8765/` in your browser. You should see the default Symfony page. You can also try out `http://127.0.0.1:8765/test/test` json route.
+7. Run `composer install` to install dependencies.
+8. Run `php bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
+9. Open `http://localhost:8765/` in your browser. You should see the default Symfony page. You can also try out `http://127.0.0.1:8765/test/test` json route.
 
 ## Extras (mostly optional)
 1. Switch your PHP version to 7.4 in PHPStorm so you get correct syntax highlighting
