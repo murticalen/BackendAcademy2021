@@ -21,7 +21,7 @@ The project is virtualized using Docker. The Docker image has 4 relevant service
 
 ### Starting Docker and testing if everything works fine
 Notes:
-1. Background on some of these steps can be found in README.html in phpdocker directory of this project.
+1. Background on some of these steps can be found in README.html in the phpdocker directory of this project.
 2. If some commands don't work as `docker compose`, try using `docker-compose`. On newer Docker versions they are the same, but `docker-compose` is the old version of the command.
 3. This "docker compose" config was created using `https://phpdocker.io/generator`, and the project is Symfony website skeleton https://symfony.com/doc/current/setup.html. Some changes were made to the generated `docker-compose.yml` file to make sure everything is working properly. In 2020, tests wouldn't work if directory mapping wasn't changed from default to `/var/www/{project_name}`.
 
@@ -30,7 +30,7 @@ Actual steps:
 2. Run `docker compose up`. It will run continuous Docker process in the foreground of this terminal, meaning you will have to open a new terminal instance to do other things. If you add `-d`, Docker will run in background. It is recommended that for the first time, you run in the foreground to see if any warnings show up.
 3. Docker will start, download some archives and ask for some permissions for file system mapping. Allow anything it asks for.
 4. If you ran Docker in the foreground, open new terminal and position in the same directory. Otherwise, use the current instance.
-5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal and we will run most of the stuff here.
+5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal, and we will run most of the stuff here.
 6. There is a pre-configured Symfony project here in `academy` directory which Docker maps to `/var/www/academy` in our containers. Therefore, run `cd /var/www/academy` to position in the mapped directory.
 7. Run `composer install` to install dependencies.
 8. Run `php bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
