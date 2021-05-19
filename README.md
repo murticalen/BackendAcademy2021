@@ -21,7 +21,7 @@ The project is virtualized using Docker. The Docker image has 4 relevant service
 
 ### Starting Docker and testing if everything works fine
 Notes:
-1. Background on some of there steps can be found in README.html in phpdocker directory of this project.
+1. Background on some of these steps can be found in README.html in phpdocker directory of this project.
 2. If some commands don't work as `docker compose`, try using `docker-compose`. On newer Docker versions they are the same, but `docker-compose` is the old version of the command.
 3. This "docker compose" config was created using `https://phpdocker.io/generator`, and the project is Symfony website skeleton https://symfony.com/doc/current/setup.html. Some changes were made to the generated `docker-compose.yml` file to make sure everything is working properly. In 2020, tests wouldn't work if directory mapping wasn't changed from default to `/var/www/{project_name}`.
 
