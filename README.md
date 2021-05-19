@@ -21,22 +21,23 @@ The project is virtualized using Docker. The Docker image has 4 relevant service
 
 ### Starting Docker and testing if everything works fine
 Notes:
-1. Background on some of there steps can be found in README.html in phpdocker directory of this project.
+1. Background on some of these steps can be found in README.html in the phpdocker directory of this project.
 2. If some commands don't work as `docker compose`, try using `docker-compose`. On newer Docker versions they are the same, but `docker-compose` is the old version of the command.
-3. This docker compose config was created using https://phpdocker.io/generator and the project is Symfony website skeleton https://symfony.com/doc/current/setup.html. Some changes were made to the generated `docker-compose.yml` file to make sure everything is working properly. In 2020, tests wouldn't work if directory mapping wasn't changed from default to `/var/www/{project_name}`.
+3. This "docker compose" config was created using `https://phpdocker.io/generator`, and the project is Symfony website skeleton https://symfony.com/doc/current/setup.html. Some changes were made to the generated `docker-compose.yml` file to make sure everything is working properly. In 2020, tests wouldn't work if directory mapping wasn't changed from default to `/var/www/{project_name}`.
 
 Actual steps:
-1. Position yourself in main directory of this git repository in your preferred command line terminal.
-2. Run `docker compose up`. It will run contineous Docker process in the foreground of this terminal, meaning you will have to open a new terminal instance to do other things. If you add `-d`, Docker will run in background. It is recommended that for the first time, you run in the foreground to see if any warnings show up.
+1. Position yourself in the main directory of this git repository in your preferred command line terminal.
+2. Run `docker compose up`. It will run continuous Docker process in the foreground of this terminal, meaning you will have to open a new terminal instance to do other things. If you add `-d`, Docker will run in background. It is recommended that for the first time, you run in the foreground to see if any warnings show up.
 3. Docker will start, download some archives and ask for some permissions for file system mapping. Allow anything it asks for.
 4. If you ran Docker in the foreground, open new terminal and position in the same directory. Otherwise, use the current instance.
-5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal and we will run most of the stuff here.
+5. Run `docker compose exec php-fpm bash`. The command will shell you inside PHP-FPM service's bash terminal, and we will run most of the stuff here.
 6. There is a pre-configured Symfony project here in `academy` directory which Docker maps to `/var/www/academy` in our containers. Therefore, run `cd /var/www/academy` to position in the mapped directory.
-7. Run `bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
-8. Open `http://localhost:8765/` in your browser. You should see the default Symfony page. You can also try out `http://127.0.0.1:8765/test/test` json route.
+7. Run `composer install` to install dependencies.
+8. Run `php bin/console doctrine:schema:update --dump-sql` for Doctrine to check ORM schema sync with DB. If you see some SQL, everything works fine.
+9. Open `http://localhost:8765/` in your browser. You should see the default Symfony page. You can also try out `http://127.0.0.1:8765/test/test` json route.
 
 ## Extras (mostly optional)
-1. Switch your PHP version to 7.4 in PHPStorm so you get correct syntax highlighting
+1. Switch your PHP version to 7.4 in PHPStorm, so you get correct syntax highlighting
 2. In the main directory of this repo, there is a SofaStyle.xml file which is a PHPStorm style config my preferred PHP code style. Import it in the editor if you want to use it.
 3. PHPStorm has many nice plugins created by the community. In my opionion they can be divided in 3 groups by installation recommendation:
     1. Why is that not included out of the box: ".env files support", "Symfony Support" and "PHP Annotations".
