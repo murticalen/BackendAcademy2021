@@ -75,7 +75,7 @@ class Company extends AbstractPrimaryEntity
 
     /**
      * @Groups({"common"})
-     * @return int|null\
+     * @return int|null
      */
     public function getFoundedTimestamp(): ?int
     {
