@@ -30,11 +30,15 @@ class Company extends AbstractPrimaryEntity
      */
     protected ?\DateTime $founded = null;
 
-    //TODO add country
+    /**
+     * @ORM\Embedded(class="App\Entity\Country\Country")
+     * @var Country
+     */
+    protected Country $country;
 
     public function __construct()
     {
-        //TODO add country construction
+        $this->country = new Country(); //ALWAYS INITIALIZE EMBEDDED ENTITIES IN CONSTRUCTOR
     }
 
     /**
@@ -71,10 +75,26 @@ class Company extends AbstractPrimaryEntity
 
     /**
      * @Groups({"common"})
-     * @return int|null\
+     * @return int|null
      */
     public function getFoundedTimestamp(): ?int
     {
         return $this->founded ? $this->founded->getTimestamp() : null;
+    }
+
+    /**
+     * @return Country
+     */
+    public function getCountry(): Country
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param Country $country
+     */
+    public function setCountry(Country $country): void
+    {
+        $this->country = $country;
     }
 }
