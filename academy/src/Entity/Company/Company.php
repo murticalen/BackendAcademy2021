@@ -96,5 +96,9 @@ class Company extends AbstractPrimaryEntity
     public function setCountry(Country $country): void
     {
         $this->country = $country;
+        // DO NOT DO THIS, BUT TEST HEAVILY IF YOU MUST DO IT
+//        if ($this->country->getName()) {
+//            $this->setName($this->getName() . ' ' . $this->country->getName());
+//        }
     }
 }

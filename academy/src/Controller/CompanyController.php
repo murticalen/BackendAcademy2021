@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Company\Company;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +24,7 @@ class CompanyController extends AbstractController
 
     /**
      * @Route("/{id}")
+     * @Cache(smaxage="3789")
      */
     public function detailsAction(Company $company, ?User $user = null): JsonResponse
     {

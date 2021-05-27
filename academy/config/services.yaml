@@ -21,6 +21,11 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
 
+    _instanceof:
+        # Autoconfigure Subscribers that implement AutoLoadedEventSubscriber, which will load the subscribers on boot
+        App\Service\Listener\AutoloadedEventListener:
+            tags: [ doctrine.event_subscriber ]
+
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
