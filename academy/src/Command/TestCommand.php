@@ -12,21 +12,38 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use SymfonyBundles\RedisBundle\Redis\ClientInterface;
 
 class TestCommand extends Command
 {
 
     protected EntityManagerInterface $entityManager;
+    protected ClientInterface $client;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, ClientInterface $client)
     {
         parent::__construct('test');
         $this->entityManager = $entityManager;
+        $this->client        = $client;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        /** @var Company $company */
+        $company = $this->entityManager->getRepository(Company::class)->findOneBy(['id' => 1]);
 
+        var_dump($company);
+
+        $company->setFounded(new \DateTime());
+
+        $this->entityManager->flush();
+
+        die;
+        $this->client->push('aaa', 5);
+
+        var_dump($this->client->pop('aaa'));
+
+        die;
         $devices = $this->entityManager->getRepository(Device::class)->findAll();
         /** @var Device $device */
         foreach ($devices as $device) {
