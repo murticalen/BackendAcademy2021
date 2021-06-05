@@ -7,6 +7,7 @@ use App\Entity\AbstractPrimaryEntity;
 use App\Entity\Company\Company;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\Device\DeviceRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class Device
@@ -25,6 +26,7 @@ abstract class Device extends AbstractPrimaryEntity
 
     /**
      * @ORM\ManyToOne(targetEntity=Company::class)
+     * @Groups("common")
      * @var Company
      */
     private Company $maker;
